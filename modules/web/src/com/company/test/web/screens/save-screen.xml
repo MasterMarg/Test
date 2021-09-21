@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://saveScreen.caption"
+        messagesPack="com.company.test.web.screens">
+    <layout>
+        <vbox spacing="true">
+            <textField id="textField" inputPrompt="Введите имя файла..."/>
+            <hbox align="MIDDLE_CENTER" spacing="true">
+                <button caption="Сохранить" invoke="pressSaveButton"/>
+                <button caption="Отмена" invoke="pressCancelButton"/>
+            </hbox>
+        </vbox>
+    </layout>
+</window>

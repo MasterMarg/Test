@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:gui="http://schemas.haulmont.com/cuba/spring/cuba-gui.xsd">
+
+    <!-- Annotation-based beans -->
+    <context:component-scan base-package="com.company.test"/>
+    
+    <gui:screens base-packages="com.company.test.web"/>
+    <bean id="test_proxyCreator" class="com.haulmont.cuba.web.sys.remoting.WebRemoteProxyBeanCreator">
+        <property name="serverSelector" ref="cuba_ServerSelector"/>
+        <property name="remoteServices">
+            <map>
+                <entry key="test_MagicSquareService" value="com.company.test.service.MagicSquareService"/>
+                <entry key="test_LinesComparisonService" value="com.company.test.service.LinesComparisonService"/>
+                <entry key="test_MainService" value="com.company.test.service.MainService"/>
+                <entry key="test_SaveLoadService" value="com.company.test.service.SaveLoadService"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>
