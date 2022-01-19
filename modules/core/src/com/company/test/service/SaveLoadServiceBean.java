@@ -2,6 +2,8 @@ package com.company.test.service;
 
 import org.springframework.stereotype.Service;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 @Service(SaveLoadService.NAME)
 public class SaveLoadServiceBean implements SaveLoadService {
@@ -16,13 +18,9 @@ public class SaveLoadServiceBean implements SaveLoadService {
     }
 
     public String[] loadFromFile(String path) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(path));
-        String[] result = new String[2];
-        result[0] = reader.readLine();
-        StringBuilder builder = new StringBuilder();
-        while(reader.ready()) builder.append(reader.readLine()).append("\n");
-        builder.deleteCharAt(builder.length()-1);
-        result[1] = builder.toString();
-        return result;
+        String[] data =  Files.lines(Paths.get(path)).toArray(String[]::new);
+        StringBuilder builder = new StringBuilder(data[1]);
+        for (int index = 2; index < data.length; index++) builder.append("\n").append(data[index]);
+        return new String[]{data[0], builder.toString()};
     }
 }

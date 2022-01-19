@@ -39,15 +39,25 @@ public class MainScreen extends Screen {
     private FileUploadingAPI fileUploadingAPI;
     @Inject
     private SaveLoadService loadService;
+    @Inject
+    private MessageBundle messageBundle;
 
+    /**
+     * Subscribing to screen initialisation event to initialise LookUpField's options
+     * @param event screen initialisation event
+     */
     @Subscribe
     public void onInit(InitEvent event) {
         Map<String, Integer> map = new LinkedHashMap<>();
-        map.put("Минимальная стоимость трансформации до нормального квадрата", 1);
-        map.put("Поиск включенных элементов строки", 2);
+        map.put(messageBundle.getMessage("lookUpField.comp1.caption"), 1);
+        map.put(messageBundle.getMessage("lookUpField.comp2.caption"), 2);
         tasks.setOptionsMap(map);
     }
 
+    /**
+     * Subscribing to successful file uploading event in the FileUploadField to get data from the loaded file
+     * @param event successful file uploading event
+     */
     @Subscribe("uploadField")
     public void onUploadFieldFileUploadSucceed(FileUploadField.FileUploadSucceedEvent event) {
         File file = fileUploadingAPI.getFile(uploadField.getFileId());
@@ -59,33 +69,43 @@ public class MainScreen extends Screen {
             } catch (IOException | RuntimeException exception) {
                 log.error("Error", exception);
             }
-        } else notifications.create(Notifications.NotificationType.ERROR).withCaption("Файл не найден!").show();
+        } else notifications.create(Notifications.NotificationType.ERROR).
+                withCaption(messageBundle.getMessage("fileNotFoundException.message")).show();
     }
 
+    /**
+     * Invoking this method on a Count button click
+     */
     public void pressCountButton() {
-        resultField.setValue(null);
+        resultField.clear();
         if (tasks.getValue() == null || tasks.getValue() == 0) notifications.
-                create(Notifications.NotificationType.HUMANIZED).withCaption("Выберите задание!").show();
+                create(Notifications.NotificationType.HUMANIZED).
+                withCaption(messageBundle.getMessage("taskException.message")).show();
         else if (dataField.getValue() == null) {
             notifications.create(Notifications.NotificationType.HUMANIZED).
-                    withCaption("Введите данные!").show();
+                    withCaption(messageBundle.getMessage("noDataException.message")).show();
         } else {
             try {
                 resultField.setValue(mainService.getResult(tasks.getValue(), dataField.getValue()));
             } catch (RuntimeException exception) {
-                notifications.create(Notifications.NotificationType.WARNING).withCaption("Ошибка!").
-                        withDescription("Проверьте правильность введенных данных!").show();
+                notifications.create(Notifications.NotificationType.WARNING).
+                        withCaption(messageBundle.getMessage("wrongDataException.caption")).
+                        withDescription(messageBundle.getMessage("wrongDataException.message")).show();
             }
         }
     }
 
+    /**
+     * Invoking this method on a Save button press, creating a new SaveScreen to save data
+     */
     public void saveData() {
         SaveScreen screen = screens.create(SaveScreen.class);
         if (tasks.getValue() != null) screen.setType(tasks.getValue());
         if (dataField.getValue() != null) {
             screen.setData(dataField.getValue());
             screens.show(screen);
-        } else notifications.create(Notifications.NotificationType.WARNING).withCaption("Внимание!").
-                withDescription("Введите данные для сохранения!").show();
+        } else notifications.create(Notifications.NotificationType.WARNING).
+                withCaption(messageBundle.getMessage("noSavingDataException.caption")).
+                withDescription(messageBundle.getMessage("noSavingDataException.message")).show();
     }
 }

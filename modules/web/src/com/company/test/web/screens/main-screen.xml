@@ -4,16 +4,17 @@
         messagesPack="com.company.test.web.screens">
     <layout margin="true, true, true, true">
         <vbox height="AUTO" width="AUTO">
-            <lookupField id="tasks" align="TOP_CENTER" nullOptionVisible="false" nullName="Выберите задание"/>
+            <lookupField id="tasks" nullOptionVisible="false" nullName="msg://lookUpField.null.caption"
+                         align="TOP_CENTER"/>
             <hbox margin="true,false,true,false">
-                <textArea height="115%" id="dataField" inputPrompt="msg://dataFieldPrompt"
-                description="msg://dataFieldPrompt"/>
-                <vbox spacing="true" margin="false, true, false, true">
-                    <button caption="Посчитать" align="MIDDLE_CENTER" invoke="pressCountButton"/>
-                    <button caption="Сохранить" align="MIDDLE_CENTER" invoke="saveData"/>
-                    <upload id="uploadField" align="MIDDLE_CENTER" uploadButtonCaption="Загрузить"/>
+                <textArea id="dataField" height="115%" inputPrompt="msg://dataField.promptMessage"
+                          description="msg://dataField.promptMessage"/>
+                <vbox margin="false, true, false, true" spacing="true">
+                    <button invoke="pressCountButton" caption="msg://countButton.caption" align="MIDDLE_CENTER"/>
+                    <button invoke="saveData" caption="msg://saveButton.caption" align="MIDDLE_CENTER"/>
+                    <upload id="uploadField" uploadButtonCaption="msg://uploadButton.caption" align="MIDDLE_CENTER"/>
                 </vbox>
-                <textArea height="115%" id="resultField" inputPrompt="Ожидаем данные..." editable="false"/>
+                <textArea id="resultField" height="115%" editable="false" inputPrompt="msg://resultField.promptMessage"/>
             </hbox>
         </vbox>
     </layout>
