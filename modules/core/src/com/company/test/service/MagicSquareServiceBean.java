@@ -154,7 +154,7 @@ public class MagicSquareServiceBean implements MagicSquareService {
      * This method counts a transformation cost for a given square and chosen true magic square
      *
      * @param data     is a {@link BigInteger} two-dimensional array representing given square
-     * @param baseData is a {@code int} two-dimensional array representing chosen true magic square
+     * @param baseData is an {@code int} two-dimensional array representing chosen true magic square
      * @return a {@code BigInteger} transformation cost
      */
     private BigInteger getTransformationCost(BigInteger[][] data, int[][] baseData) {
