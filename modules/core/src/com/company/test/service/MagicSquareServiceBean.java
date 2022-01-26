@@ -87,10 +87,10 @@ public class MagicSquareServiceBean implements MagicSquareService {
      * @return an {@code ArrayList} of two-dimensional {@code int} arrays representing true magic squares
      */
     private ArrayList<int[][]> validateMagicSquares(ArrayList<String> inputData) {
-        return getMagicSequencesInNumbers(new ArrayList<>(inputData.stream().filter(o ->
+        return getMagicSequencesInNumbers(inputData.stream().filter(o ->
                 validateRowsAndColumns(o, getSumFromStringByIndexes(o, 0, 4, 8))
                         && validateDiagonal(o, getSumFromStringByIndexes(o, 0, 4, 8))).
-                collect(Collectors.toList())));
+                collect(Collectors.toCollection(ArrayList::new)));
     }
 
     /**
