@@ -42,9 +42,8 @@ public class MagicSquareServiceBean implements MagicSquareService {
      * @return a {@code BigInteger} two-dimensional array
      */
     private BigInteger[][] getInputDataFromString(String string) {
-        return Arrays.stream(Arrays.stream(string.split("\n")).map(String::trim).
-                map(o -> Arrays.stream(o.split(" ")).toArray(String[]::new)).toArray(String[][]::new)).
-                map(o -> Arrays.stream(o).map(BigInteger::new).toArray(BigInteger[]::new)).
+        return Arrays.stream(string.split("\n")).map(String::trim).
+                map(o -> Arrays.stream(o.split(" ")).map(BigInteger::new).toArray(BigInteger[]::new)).
                 toArray(BigInteger[][]::new);
     }
 
