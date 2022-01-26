@@ -13,6 +13,7 @@ public class MagicSquareServiceBean implements MagicSquareService {
     @Inject
     private Messages messages;
 
+    @Override
     public String getResult(String string) {
         BigInteger[][] data = getInputDataFromString(string);
         BigInteger cost = new BigInteger("-1");

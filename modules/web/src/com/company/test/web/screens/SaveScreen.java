@@ -30,11 +30,11 @@ public class SaveScreen extends Screen {
      */
     public void pressSaveButton() {
         if (textField.getValue() == null) notifications.create(Notifications.NotificationType.WARNING).
-                withCaption(messageBundle.getMessage("noFileNameException.caption")).show();
+                withCaption(messageBundle.getMessage("mainScreen.noFileNameException.caption")).show();
         else {
             try {
                 saveLoadService.saveToFile(type, data, textField.getValue());
-                notifications.create().withCaption(messageBundle.getMessage("fileSaved.caption")).show();
+                notifications.create().withCaption(messageBundle.getMessage("mainScreen.fileSaved.caption")).show();
                 closeWithDefaultAction();
             } catch (IOException exception) {
                 log.error("Error", exception);

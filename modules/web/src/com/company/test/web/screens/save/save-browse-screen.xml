@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://saveBrowseScreen.caption"
+        focusComponent="savesTable"
+        messagesPack="com.company.test.web.screens.save">
+    <data readOnly="true">
+        <collection id="savesDc"
+                    class="com.company.test.entity.Save">
+            <view extends="_local"/>
+            <loader id="savesDl">
+                <query>
+                    <![CDATA[select e from Saves e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="savesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="savesTable"
+                dataLoader="savesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="savesTable"
+                    width="100%"
+                    dataContainer="savesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="data"/>
+                <column id="task"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="savesTable.create"/>
+                <button id="editBtn" action="savesTable.edit"/>
+                <button id="removeBtn" action="savesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="true">
+            <button id = "confirmButton" caption="msg://saveBrowseScreen.selectButton.caption" invoke="onSaveButtonClick"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

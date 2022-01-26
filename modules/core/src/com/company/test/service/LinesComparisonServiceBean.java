@@ -10,6 +10,7 @@ public class LinesComparisonServiceBean implements LinesComparisonService {
     @Inject
     private Messages messages;
 
+    @Override
     public String getResult(String string) {
         StringBuilder answer = new StringBuilder();
         String[][] data = getDataFromString(string);

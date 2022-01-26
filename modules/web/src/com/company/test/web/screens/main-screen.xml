@@ -4,17 +4,19 @@
         messagesPack="com.company.test.web.screens">
     <layout margin="true, true, true, true">
         <vbox height="AUTO" width="AUTO">
-            <lookupField id="tasks" nullOptionVisible="false" nullName="msg://lookUpField.null.caption"
+            <lookupField id="tasks" nullOptionVisible="false" nullName="msg://mainScreen.lookUpField.null.caption"
                          align="TOP_CENTER"/>
             <hbox margin="true,false,true,false">
-                <textArea id="dataField" height="115%" inputPrompt="msg://dataField.promptMessage"
-                          description="msg://dataField.promptMessage"/>
+                <textArea id="dataField" height="115%" inputPrompt="msg://mainScreen.dataField.promptMessage"
+                          description="msg://mainScreen.dataField.promptMessage"/>
                 <vbox margin="false, true, false, true" spacing="true">
-                    <button invoke="pressCountButton" caption="msg://countButton.caption" align="MIDDLE_CENTER"/>
-                    <button invoke="saveData" caption="msg://saveButton.caption" align="MIDDLE_CENTER"/>
-                    <upload id="uploadField" uploadButtonCaption="msg://uploadButton.caption" align="MIDDLE_CENTER"/>
+                    <button invoke="pressCountButton" caption="msg://mainScreen.countButton.caption" align="MIDDLE_CENTER"/>
+                    <button invoke="saveData" caption="msg://mainScreen.saveButton.caption" align="MIDDLE_CENTER"/>
+                    <upload id="uploadField" uploadButtonCaption="msg://mainScreen.uploadButton.caption" align="MIDDLE_CENTER"/>
+                    <button invoke="saveToDB" caption="msg://mainScreen.saveToDBButton.caption" align="MIDDLE_CENTER"/>
+                    <button invoke="loadFromDB" caption="msg://mainScreen.loadFromDBButton.caption" align="MIDDLE_CENTER"/>
                 </vbox>
-                <textArea id="resultField" height="115%" editable="false" inputPrompt="msg://resultField.promptMessage"/>
+                <textArea id="resultField" height="115%" editable="false" inputPrompt="msg://mainScreen.resultField.promptMessage"/>
             </hbox>
         </vbox>
     </layout>

@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 @Service(SaveLoadService.NAME)
 public class SaveLoadServiceBean implements SaveLoadService {
 
+    @Override
     public void saveToFile(int type, String data, String fileName) throws IOException {
         File file = new File("Saves");
         if (!file.isDirectory()) file.mkdir();
@@ -17,6 +18,7 @@ public class SaveLoadServiceBean implements SaveLoadService {
         writer.close();
     }
 
+    @Override
     public String[] loadFromFile(String path) throws IOException {
         String[] data =  Files.lines(Paths.get(path)).toArray(String[]::new);
         StringBuilder builder = new StringBuilder(data[1]);

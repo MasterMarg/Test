@@ -6,8 +6,8 @@
         <vbox spacing="true">
             <textField id="textField" inputPrompt="Введите имя файла..."/>
             <hbox align="MIDDLE_CENTER" spacing="true">
-                <button caption="Сохранить" invoke="pressSaveButton"/>
-                <button caption="Отмена" invoke="pressCancelButton"/>
+                <button caption="msg://saveScreen.saveButton.caption" invoke="pressSaveButton"/>
+                <button caption="msg://saveScreen.cancelButton.caption" invoke="pressCancelButton"/>
             </hbox>
         </vbox>
     </layout>
