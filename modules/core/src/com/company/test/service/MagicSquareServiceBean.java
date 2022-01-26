@@ -159,7 +159,7 @@ public class MagicSquareServiceBean implements MagicSquareService {
      * @return a {@code BigInteger} transformation cost
      */
     private BigInteger getTransformationCost(BigInteger[][] data, int[][] baseData) {
-        BigInteger counter = new BigInteger("0");
+        BigInteger counter = BigInteger.ZERO;
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++)
                 counter = counter.add((data[i][j].
