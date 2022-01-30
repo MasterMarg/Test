@@ -97,6 +97,10 @@ public class MainScreen extends Screen {
         } else {
             try {
                 resultField.setValue(mainService.getResult(tasks.getValue(), dataField.getValue()));
+            } catch (IOException exception) {
+                notifications.create(Notifications.NotificationType.WARNING).
+                        withCaption(messageBundle.getMessage("mainScreen.wrongDataException.caption")).
+                        withDescription(exception.getMessage()).show();
             } catch (RuntimeException exception) {
                 notifications.create(Notifications.NotificationType.WARNING).
                         withCaption(messageBundle.getMessage("mainScreen.wrongDataException.caption")).

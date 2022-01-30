@@ -1,5 +1,7 @@
 package com.company.test.service;
 
+import java.io.IOException;
+
 public interface MainService {
     String NAME = "test_MainService";
 
@@ -11,5 +13,5 @@ public interface MainService {
      * @param data is a string input of a user on main screen
      * @return a {@code String} representation of a calculated result
      */
-    String getResult(int type, String data);
+    String getResult(int type, String data) throws IOException;
 }

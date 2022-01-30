@@ -8,7 +8,7 @@ create table SAVES (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    DATA varchar(8000) not null,
+    DATA varchar(255) not null,
     TYPE integer,
     --
     primary key (ID)

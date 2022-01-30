@@ -12,21 +12,16 @@ import javax.persistence.Table;
 @NamePattern("%s|id")
 public class Save extends StandardEntity {
     private static final long serialVersionUID = -376632752676386870L;
-    @Column(
-            name = "DATA",
-            nullable = false
-    )
-    private String data;
-    @Column(
-            name = "TYPE"
-    )
-    private Integer task;
 
-    public Save() {
-    }
+    @Column(name = "DATA", nullable = false)
+    private String data;
+
+    @Column(name = "TYPE")
+    private Integer task;
 
     /**
      * Standard method to get a data value
+     *
      * @return a {@link String} value of data field
      */
     public String getData() {
@@ -35,25 +30,28 @@ public class Save extends StandardEntity {
 
     /**
      * This method is used to set data value
+     *
      * @param value is a {@link String} containing data value to set
      */
-    public void setData(String value){
+    public void setData(String value) {
         this.data = value;
     }
 
     /**
      * Standard method to get a task value
+     *
      * @return an {@code int} representing a type of a task
      */
-    public Integer getTask(){
+    public Integer getTask() {
         return this.task;
     }
 
     /**
      * This method is used to set task value
+     *
      * @param value is an {@code int} representing a type of a task to set
      */
-    public void setTask(Integer value){
+    public void setTask(Integer value) {
         this.task = value;
     }
 }

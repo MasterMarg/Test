@@ -1,5 +1,7 @@
 package com.company.test.service;
 
+import java.io.IOException;
+
 public interface LinesComparisonService {
     String NAME = "test_LinesComparisonService";
 
@@ -10,5 +12,5 @@ public interface LinesComparisonService {
      * @param string is a solid string input of a user on main screen
      * @return a {@code String} as a calculated result
      */
-    String getResult(String string);
+    String getResult(String string) throws IOException;
 }
